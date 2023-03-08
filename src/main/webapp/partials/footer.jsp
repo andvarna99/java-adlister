@@ -17,7 +17,7 @@
 </head>
 <body>
 <footer class="text-center bg-light fixed-bottom">
-    <section class="d-flex justify-content-center justify-content-lg-between p-2">
+    <section class="d-flex justify-content-center p-2">
         <a href="https://facebook.com" class="me-4 text-dark">
             <i class="fab fa-facebook-f"></i>
         </a>
@@ -37,7 +37,7 @@
             <i class="fab fa-github"></i>
         </a>
     </section>
-    <div class="text-center p-2 bg-dark bg-gradient text-light" >
+    <div class="justify-content-center p-2 bg-dark bg-gradient text-light" >
         © 2023 Copyright:
         <a class="text-reset fw-bold" >login.com</a>
     </div>
