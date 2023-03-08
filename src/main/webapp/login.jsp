@@ -34,7 +34,7 @@
         <div class="mb-4 form-outline">
             <label class="form-label w-100">
                 Password:
-                <input type="text" name="password" class="form-control " placeholder="Enter Password"/>
+                <input type="password" name="password" class="form-control " placeholder="Enter Password"/>
             </label>
         </div>
         <button type = "submit" value = "Submit" class="btn bg-danger bg-gradient btn-block mb-4 w-100" style="--bs-bg-opacity: .25;"> Log In</button>
