@@ -12,9 +12,6 @@ import java.io.IOException;
 public class PizzaOrderFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/servlets_with_jsps/pizza_order_form.jsp").forward(request, response);
-
-
-
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        handles form submission
@@ -30,6 +27,7 @@ public class PizzaOrderFormServlet extends HttpServlet {
             System.out.println("crust type is: " + crustType);
             System.out.println("sauce type is: " + sauceType);
             System.out.println("size type is: " + sizeType);
+            System.out.println("toppings are: ");
             for (String topping: toppings) {
                 System.out.println("\t" + topping);
             }
