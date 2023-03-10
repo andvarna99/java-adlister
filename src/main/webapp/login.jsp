@@ -18,7 +18,7 @@
 
 <%@ include file="partials/navbar.jsp" %>
 <%@ include file="partials/header.jsp" %>
-    <form action="/login" method = "POST" class="container-fluid border shadow-lg">
+    <form action="login" method = "POST" class="container-fluid border shadow-lg">
         <div class="mt-4 form-outline">
             <label class="form-label w-100">
                 Username:
