@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Login</title>
@@ -14,17 +15,10 @@
 
 </head>
 <body>
-<%
-    String username = request.getParameter("username");
-    String password = request.getParameter("password");
-    System.out.println(username + " " + password);
-    if(username != null && username.equals("admin") && password != null && password.equals("password")){
-        response.sendRedirect("/profile.jsp");
-    }
-%>
+
 <%@ include file="partials/navbar.jsp" %>
 <%@ include file="partials/header.jsp" %>
-    <form action="login.jsp" method = "POST" class="container-fluid border shadow-lg">
+    <form action="/login" method = "POST" class="container-fluid border shadow-lg">
         <div class="mt-4 form-outline">
             <label class="form-label w-100">
                 Username:
