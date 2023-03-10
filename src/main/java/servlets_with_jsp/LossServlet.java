@@ -12,8 +12,10 @@ public class LossServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String guessedNumber = request.getParameter("number");
         String randomNumber = request.getParameter("randomNum");
+
         request.setAttribute("guessedNumber", guessedNumber);
         request.setAttribute("randomNumber",randomNumber);
+
         request.setAttribute("message", "incorrect");
 
         request.getRequestDispatcher("/servlets_with_jsps/viewing.jsp").forward(request, response);

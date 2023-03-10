@@ -11,6 +11,7 @@ import java.io.IOException;
 public class WinServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String guessedNumber = request.getParameter("number");
+
         request.setAttribute("guessedNumber", guessedNumber);
         request.setAttribute("message", "correct");
 

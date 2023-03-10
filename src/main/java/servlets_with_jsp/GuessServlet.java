@@ -17,15 +17,22 @@ public class GuessServlet extends HttpServlet {
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
         String guessedNumber = request.getParameter("guessNumber");
         System.out.println(guessedNumber);
+
         String randomNum = String.valueOf(ThreadLocalRandom.current().nextInt(1,3 + 1));
+
         if (Objects.equals(guessedNumber, randomNum) && guessedNumber != null){
+
             System.out.println("you picked: " + guessedNumber + "\t correct answer was: " + randomNum);
+
             response.sendRedirect("/correct?number="+guessedNumber);
-        }
-        else if(guessedNumber != null && !Objects.equals(guessedNumber, randomNum)){
+
+        } else if(guessedNumber != null && !Objects.equals(guessedNumber, randomNum)){
+
             System.out.println("you picked: " + guessedNumber + "\t correct answer was: " + randomNum);
+
             response.sendRedirect("/incorrect?number="+guessedNumber+"&randomNum="+randomNum);
         }
     }
