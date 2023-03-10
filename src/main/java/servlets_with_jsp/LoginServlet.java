@@ -13,12 +13,16 @@ public class LoginServlet extends HttpServlet {
         request.getRequestDispatcher("/login.jsp").forward(request, response);
 
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         System.out.println(username + " " + password);
         if(username != null && username.equals("admin") && password != null && password.equals("password")){
-            response.sendRedirect("/profile.jsp");
+            request.getRequestDispatcher("/profile.jsp").forward(request, response);
+            return;
         }
+        //if we get here the user is not an admin so we reload the login page
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
+
     }
 }
