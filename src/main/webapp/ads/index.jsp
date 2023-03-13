@@ -16,7 +16,7 @@
 </head>
 <body>
 <%--show listing of all ads--%>
-<h1 class="text-center">Ads</h1>
+<h1 class="text-center">AdLister</h1>
 <c:forEach var="ad" items="${ads}">
     <div class="card w-50 container-fluid border shadow-lg p-2">
         <div class="card-body">

@@ -1,6 +1,5 @@
 package ads;
 
-import books.Book;
 import books.Config;
 import com.mysql.cj.jdbc.Driver;
 
@@ -8,9 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLadsDao implements Ads{
+public class MySQLAdsDao implements Ads{
     private Connection connection = null;
-    public MySQLadsDao(Config config){
+    public MySQLAdsDao(Config config){
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
@@ -28,7 +27,7 @@ public class MySQLadsDao implements Ads{
         List<Ad> ads = new ArrayList<>();
         try{
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ymir_andrea.ads;");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM ads;");
             while(rs.next()){
                 ads.add(new Ad(
                         rs.getLong("id"),
@@ -44,7 +43,15 @@ public class MySQLadsDao implements Ads{
     }
 
     @Override
-    public Long insert(Ad ad) {
-        return null;
+    public Long insert(Ad ad){
+        try {
+            Statement stmt = connection.createStatement();
+            String sql = String.format("INSERT INTO ads(title,description,user_id)VALUES ('%s','%s',%d);", ad.getTitle(),ad.getDescription(),ad.getUserId());
+            long results = stmt.executeUpdate(sql);
+            return results;
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+
     }
 }
