@@ -12,8 +12,8 @@ import lombok.Setter;
 public class Ad {
 //    this is the Ad bean
     private long id;
-    private long userId;
     private String title;
     private String description;
+    private long userId;
 
 }
