@@ -7,4 +7,5 @@ public interface Ads {
 //    if you implement ads you have to use this method
     List<Ad> all();
 
+    Long insert(Ad ad);
 }

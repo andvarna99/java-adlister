@@ -42,4 +42,9 @@ public class MySQLadsDao implements Ads{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public Long insert(Ad ad) {
+        return null;
+    }
 }
