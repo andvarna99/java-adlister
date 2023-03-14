@@ -14,8 +14,10 @@
 
 </head>
 <body>
-<%@ include file="partials/navbar.jsp" %>
+
+<%@ include file ="partials/profile_navbar.jsp" %>
 <div class="container-fluid mx-auto">
+    <h1 class="text-center">WELCOME ${username}</h1>
     <p class="text-center"> This is your profile page!</p>
 </div>
 <%@ include file="partials/footer.jsp"%>
