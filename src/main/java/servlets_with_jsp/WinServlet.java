@@ -15,7 +15,7 @@ public class WinServlet extends HttpServlet {
         request.setAttribute("guessedNumber", guessedNumber);
         request.setAttribute("message", "correct");
 
-        request.getRequestDispatcher("/servlets_with_jsps/viewing.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/servlets_with_jsps/viewing.jsp").forward(request, response);
 
     }
 

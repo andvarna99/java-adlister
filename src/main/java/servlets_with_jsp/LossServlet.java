@@ -18,7 +18,7 @@ public class LossServlet extends HttpServlet {
 
         request.setAttribute("message", "incorrect");
 
-        request.getRequestDispatcher("/servlets_with_jsps/viewing.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/servlets_with_jsps/viewing.jsp").forward(request, response);
 
     }
 

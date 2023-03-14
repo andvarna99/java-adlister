@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @WebServlet(name="GuessServlet",urlPatterns = "/guess")
 public class GuessServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        request.getRequestDispatcher("/servlets_with_jsps/guessing.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/servlets_with_jsps/guessing.jsp").forward(request, response);
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

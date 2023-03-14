@@ -13,7 +13,7 @@ public class ViewColorServlet extends HttpServlet {
         String favoriteColor = request.getParameter("color");
         request.setAttribute("favoriteColor", favoriteColor);
         if(favoriteColor != null) {
-            request.getRequestDispatcher("/servlets_with_jsps/view_color.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/servlets_with_jsps/view_color.jsp").forward(request, response);
         }
     }
 }

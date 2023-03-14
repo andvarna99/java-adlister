@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet(name="PizzaOrderFormServlet",urlPatterns = "/pizza-order")
 public class PizzaOrderFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/servlets_with_jsps/pizza_order_form.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/servlets_with_jsps/pizza_order_form.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        handles form submission
@@ -31,7 +31,7 @@ public class PizzaOrderFormServlet extends HttpServlet {
             for (String topping: toppings) {
                 System.out.println("\t" + topping);
             }
-            request.getRequestDispatcher("/servlets_with_jsps/pizza_order_form.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/servlets_with_jsps/pizza_order_form.jsp").forward(request, response);
 
         }
     }

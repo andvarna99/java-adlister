@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet(name="PickColorServlet",urlPatterns = "/pickcolor")
 public class PickColorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/servlets_with_jsps/pick_color.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/servlets_with_jsps/pick_color.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String favoriteColor = request.getParameter("favoriteColor");
