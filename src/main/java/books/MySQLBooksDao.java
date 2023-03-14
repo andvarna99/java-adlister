@@ -24,8 +24,10 @@ public class MySQLBooksDao implements Books{
     public List<Book> all(){
         List<Book> books = new ArrayList<>();
         try{
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM books_example.books;");
+            String sql = "SELECT * FROM books_example.books";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+//            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 books.add(new Book(
                         rs.getLong("id"),
@@ -34,6 +36,20 @@ public class MySQLBooksDao implements Books{
                 ));
             }
             return books;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public long insert(Book book){
+        String sql = "INSERT INTO books_example.books (title,author) VALUES (?,?);";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, book.getTitle());
+            stmt.setString(2,book.getAuthor());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

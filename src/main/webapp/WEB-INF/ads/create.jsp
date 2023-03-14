@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container-fluid border shadow-lg">
   <h1>Create a new Ad</h1>
   <form action="/ads/create" method="post">
     <div class="form-group">
@@ -28,7 +28,7 @@
       <label for="description">Description</label>
       <textarea id="description" name="description" class="form-control" type="text"></textarea>
     </div>
-    <input type="submit" class="btn btn-block btn-primary">
+    <input type="submit" class="btn btn-block btn-primary mt-2">
   </form>
 </div>
 
