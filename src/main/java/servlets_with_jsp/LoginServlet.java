@@ -17,12 +17,13 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         System.out.println(username + " " + password);
-        if(username != null && username.equals("admin") && password != null && password.equals("password")){
-            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-            return;
+        boolean validAttempt = username.equals("admin") && password.equals("password");
+        if(username != null && validAttempt){
+            response.sendRedirect("/profile");
+        }else{
+            //if we get here the user is not an admin so we reload the login page
+            response.sendRedirect("/login");
         }
-        //if we get here the user is not an admin so we reload the login page
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 
     }
 }
