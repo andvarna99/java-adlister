@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import books.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
@@ -28,6 +29,7 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public List<Ad> all() {
+        //no imput from user here so we dont need a prepared statement
         Statement stmt = null;
         try {
             stmt = connection.createStatement();
@@ -40,22 +42,23 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Long insert(Ad ad) {
+        //we ARE dealing with user input here, so we needed to change to a prepared statement
         try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(createInsertQuery(ad), Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = stmt.getGeneratedKeys();
+            PreparedStatement pstmt = null;
+            String myQuery = "INSERT INTO ads (user_id,title,description) VALUES (?,?,?)";
+            pstmt = connection.prepareStatement(myQuery,  Statement.RETURN_GENERATED_KEYS);
+
+            pstmt.setLong(1,ad.getUserId());
+            pstmt.setString(2, ad.getTitle());
+            pstmt.setString(3, ad.getDescription());
+
+            pstmt.executeUpdate();
+            ResultSet rs = pstmt.getGeneratedKeys();
             rs.next();
             return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
         }
-    }
-
-    private String createInsertQuery(Ad ad) {
-        return "INSERT INTO ads(user_id, title, description) VALUES "
-            + "(" + ad.getUserId() + ", "
-            + "'" + ad.getTitle() +"', "
-            + "'" + ad.getDescription() + "')";
     }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
