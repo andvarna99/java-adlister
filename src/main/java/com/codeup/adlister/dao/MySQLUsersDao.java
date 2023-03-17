@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import books.Config;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -42,7 +43,11 @@ public class MySQLUsersDao implements Users {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
-            stmt.setString(3, user.getPassword());
+
+            //hash the pw before saving it
+            String hashedPassword = Password.hash(user.getPassword());
+            stmt.setString(3, hashedPassword);
+
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();

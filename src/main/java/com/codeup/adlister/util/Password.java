@@ -14,12 +14,5 @@ public class Password {
     public static boolean check(String password, String hash) {
         return BCrypt.checkpw(password, hash);
     }
-    public static void main(String[] args) {
-        String pw = "password";
-        System.out.println(Password.hash(pw));
-
-        String hash = "$2a$12$2gT3CoB8jFBfVIxeSKDRi.v9xopz/oGMytbgPZfA13P080q4hKp3K";
-        System.out.println(Password.check(pw,hash));
-    }
 
 }
